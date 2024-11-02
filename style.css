@@ -1,0 +1,319 @@
+@font-face {
+    font-family: "Cantarell";
+    src: url('Cantarell.otf');
+    font-display: optional;
+}
+
+:root {
+    --cor-fundo: #ffffff;
+    --cor-fundo-2: #fffadf;
+    --cor-texto: #111111;
+    --cor-borda: #7F7F7F;
+    --cor-azul: #4096f5;
+    --borda-normal: solid 2px var(--cor-borda);
+    --borda-destaque: solid 2px var(--cor-azul);
+    --raio-borda: 15px;
+    --espaco-1: 10px;
+    --espaco-2: 20px;
+    --espaco-4: 40px;
+    --cor-cinza: #ccc;
+    --escuro: #000;
+    --claro: #fff;
+    --altura-2: 2vh;
+    --altura: 4vh;
+}
+
+* {
+    color: var(--cor-texto);
+    font-family: 'Cantarell';
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --cor-fundo: #111111;
+        --cor-texto: #fffadf;
+        --cor-borda: #cecece;
+        --cor-cinza: #222222;
+    }
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.area_central {
+    display: flex;
+    gap: var(--altura-2);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--altura-2);
+}
+
+.area_edicao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 4vw;
+}
+
+#roda_cores {
+    cursor: crosshair;
+    border: var(--borda-normal);
+    border-radius: 50%;
+}
+
+.fundo_cor_atual {
+    display: flex;
+    height: 20vh;
+    aspect-ratio: 1 / 1;
+    width: auto;
+    border: var(--borda-normal);
+    border-radius: var(--raio-borda);
+    overflow: hidden;
+}
+
+#cor_atual {
+    flex: 1;
+    background-color: rbga(0, 0, 255, 1);
+}
+
+.entrada,
+.botao button {
+    width: 90%;
+    text-align: center;
+    background-color: var(--cor-fundo);
+    border: var(--borda-normal);
+    border-radius: var(--raio-borda);
+    padding: 0.5rem;
+    color: var(--cor-texto);
+}
+
+.entrada {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.entrada label,
+.entrada button {
+    color: var(--cor-borda);
+    flex-shrink: 0;
+
+}
+
+.entrada button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.entrada button:hover {
+    background-color: var(--cor-azul);
+}
+
+
+.entrada input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    text-align: center;
+    flex-grow: 1;
+    max-width: 70%;
+    min-width: 50px;
+}
+
+.bloco_deslizar:hover,
+.entrada:focus,
+.entrada:hover {
+    border-color: var(--cor-azul);
+    outline: none;
+}
+
+.bloco_deslizar input:hover {
+    cursor: pointer;
+}
+
+.botao {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.botao button:hover {
+    cursor: pointer;
+    border-color: var(--cor-azul);
+}
+
+.bloco_cor_atual,
+.bloco_cores {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--altura-2);
+    height: 100%;
+
+}
+
+.bloco_deslizar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: var(--altura);
+    min-height: 32px;
+    border: var(--borda-normal);
+    border-radius: var(--raio-borda);
+    overflow: hidden;
+}
+
+.fundo_quadriculado {
+    background-color: var(--cor-cinza);
+    background-image:
+        linear-gradient(45deg, var(--cor-fundo) 25%, transparent 25%, transparent 75%, var(--cor-fundo) 75%, var(--cor-fundo)),
+        linear-gradient(45deg, var(--cor-fundo) 25%, transparent 25%, transparent 75%, var(--cor-fundo) 75%, var(--cor-fundo));
+    background-size: 32px 32px;
+    background-position: 0 0, 16px 16px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"] {
+    -webkit-appearance: none;
+    outline: none;
+    flex: 1;
+    margin: 0;
+    background-color: transparent;
+}
+
+
+input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    width: 0.4rem;
+    height: 100%;
+    border: none;
+    background-color: var(--cor-azul);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    width: 0.4rem;
+    height: 100%;
+    border: none;
+    background-color: var(--cor-azul);
+}
+
+#transparencia {
+    background: linear-gradient(to right, transparent, var(--claro));
+}
+
+#claridade {
+    background: linear-gradient(to right, var(--escuro), var(--claro));
+}
+
+.selecionar {
+    background-color: transparent;
+    border: var(--borda-normal);
+    border-radius: var(--raio-borda);
+    padding: 0.5rem;
+}
+
+.selecionar option {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    text-align: start;
+}
+
+#cores_fixadas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vh;
+    padding: 1vh;
+    width: 100%;
+    max-width: 100%;
+    height: calc((var(--altura) + var(--altura-2)) * 2);
+    min-height: calc((var(--altura) + var(--altura-2))* 2);
+    border: var(--borda-normal);
+    border-radius: var(--raio-borda);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.cor_fixada {
+    height: var(--altura);
+    aspect-ratio: 1 / 1;
+    width: auto;
+    border: var(--borda-normal);
+    border-radius: var(--raio-borda);
+}
+
+.cor_fixada:hover {
+    cursor: pointer;
+    border: var(--borda-destaque);
+}
+
+@-moz-document url-prefix() {
+    * {
+        scrollbar-color: var(--cor-azul) transparent;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: var(--raio-borda);
+        background-color: var(--cor-borda);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        cursor: pointer;
+        background-color: var(--cor-azul);
+    }
+
+    .trocar_cor {
+        font-size: 100%
+    }
+}
+
+
+@media (max-aspect-ratio: 1/1) and (max-width: 680px) {
+    .area_edicao {
+        flex-direction: column-reverse;
+    }
+
+    #roda_cores {
+        display: none;
+    }
+
+    .selecionar {
+        display: none;
+    }
+}
