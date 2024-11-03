@@ -7,7 +7,8 @@ let circulo_selecionar_x = 160;
 let circulo_selecionar_y = 160;
 let escuridao_atual = 0;
 let transparencia_atual = 1;
-
+let r_atual, g_atual, b_atual;
+//
 function atualizar_componentes() {
     contexto.clearRect(0, 0, canvas.width, canvas.height);
     contexto.save();
@@ -53,15 +54,20 @@ function atualizar_componentes() {
     contexto.restore();
 }
 
-function obter_cor_roda(x, y) {
+function obter_cor_roda(x = circulo_selecionar_x, y = circulo_selecionar_y) {
     const pixelData = contexto.getImageData(x, y, 1, 1).data;
     atualizar_cor_atual(pixelData[0], pixelData[1], pixelData[2]);
 }
 
-function atualizar_cor_atual(r, g, b, exeto = undefined) {
+function atualizar_cor_atual(r = r_atual, g = g_atual, b = b_atual, exeto = undefined) {
+    r_atual = r
+    g_atual = g
+    b_atual = b
     let a = isNaN(Number(transparencia_atual)) ? 1 : Number(transparencia_atual).toFixed(2);
     document.getElementById('cor_atual').style.backgroundColor = `rgba(${r},${g},${b},${a})`;
     document.getElementById('transparencia').value = transparencia_atual;
+    let claridade = (Math.max(0, Math.min(255, r)) + Math.max(0, Math.min(255, g)) + Math.max(0, Math.min(255, b))) / (3 * 255);
+    document.getElementById('claridade').value = (claridade.toFixed(2));
     if (exeto !== 'rgb') {
         document.getElementById('cor_atual_rgba').value = `${r}, ${g}, ${b}, ${a}`;
     }
@@ -267,19 +273,19 @@ document.getElementById('transparencia').addEventListener('input', function () {
     if (escuridao_atual > transparencia_atual) {
         escuridao_atual = transparencia_atual;
     }
-    obter_cor_roda(circulo_selecionar_x, circulo_selecionar_y)
+    atualizar_cor_atual();
     atualizar_componentes();
 });
 
 document.getElementById('claridade').addEventListener('input', function () {
-    const brilho = 1 - this.value
+    let brilho = 1 - this.value;
     if (brilho > transparencia_atual) {
         escuridao_atual = transparencia_atual
     } else {
         escuridao_atual = brilho;
     }
-    obter_cor_roda(circulo_selecionar_x, circulo_selecionar_y)
     atualizar_componentes();
+    obter_cor_roda();
 });
 
 function enviar_para_area_transferencia(valor) {
@@ -319,7 +325,8 @@ document.getElementById('fixar_cor').addEventListener('click', function () {
         const g = lista_rgba[1];
         const b = lista_rgba[2];
         transparencia_atual = lista_rgba[3];
-        atualizar_cor_atual(r,g,b);
+        // claridade
+        atualizar_cor_atual(r, g, b);
     });
     //
     document.getElementById('cores_fixadas').appendChild(cor_fixada);

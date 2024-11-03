@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="icone.svg" type="image/svg+xml">
@@ -8,52 +9,49 @@
     <script src="script.js" defer></script>
     <title>Selcor</title>
 </head>
+
 <body>
-    <div class="area_central">
-        <div class="area_edicao">
-            <div class="bloco_cor_atual">
-                <div class="fundo_cor_atual fundo_quadriculado">
-                    <div id="cor_atual"></div>
-                </div>
-                <div class="entrada">
-                    <label>Hex</label>
-                    <input type="text" id="cor_atual_hex" placeholder="Hex">
-                    <button id="copiar_hex">📋</button>
-                </div>
-                <div class="entrada">
-                    <label>RGBa</label>
-                    <input type="text" id="cor_atual_rgba" placeholder="RGBa">
-                    <button id="copiar_rgba">📋</button>
-                </div>
-                <div class="entrada">
-                    <label>HSL</label>
-                    <input type="text" id="cor_atual_hsl" placeholder="HSL">
-                    <button id="copiar_hsl">📋</button>
-                </div>
-                <div class="entrada">
-                    <label>HWB</label>
-                    <input type="text" id="cor_atual_hwb" placeholder="HWB">
-                    <button id="copiar_hwb">📋</button>
-                </div>
-                <div class="botao">
-                    <button id="cor_aleatoria">🎲</button>
-                    <button id="fixar_cor">📌</button>
-                </div>
+    <div class="area_edicao">
+        <div class="bloco_cor_atual">
+            <div class="fundo_cor_atual fundo_quadriculado">
+                <div id="cor_atual"></div>
             </div>
-            <div class="bloco_cores">
-                <select class="selecionar" id="selecionador_tipo" onchange="alterar_selecionador()">
-                    <option value="personalizado">Personalizado</option>
-                </select>
-                <canvas id="roda_cores" class="fundo_quadriculado"></canvas>
-                <div class="bloco_deslizar fundo_quadriculado">
-                    <input type="range" id="transparencia" min="0" max="1" value="1" step="0.01">
-                </div>
-                <div class="bloco_deslizar">
-                    <input type="range" id="claridade" min="0" max="1" value="1" step="0.01">
-                </div>
+            <div class="entrada">
+                <label>Hex</label>
+                <input type="text" id="cor_atual_hex" placeholder="Hex">
+                <button id="copiar_hex">📋</button>
+            </div>
+            <div class="entrada">
+                <label>RGBa</label>
+                <input type="text" id="cor_atual_rgba" placeholder="RGBa">
+                <button id="copiar_rgba">📋</button>
+            </div>
+            <div class="entrada">
+                <label>HSL</label>
+                <input type="text" id="cor_atual_hsl" placeholder="HSL">
+                <button id="copiar_hsl">📋</button>
+            </div>
+            <div class="entrada">
+                <label>HWB</label>
+                <input type="text" id="cor_atual_hwb" placeholder="HWB">
+                <button id="copiar_hwb">📋</button>
+            </div>
+            <div class="botao">
+                <button id="cor_aleatoria">🎲</button>
+                <button id="fixar_cor">📌</button>
             </div>
         </div>
-        <div id="cores_fixadas"></div>
+        <div class="bloco_cores">
+            <canvas id="roda_cores" class="fundo_quadriculado"></canvas>
+            <div class="bloco_deslizar fundo_quadriculado">
+                <input type="range" id="transparencia" min="0" max="1" value="1" step="0.01">
+            </div>
+            <div class="bloco_deslizar">
+                <input type="range" id="claridade" min="0" max="1" value="1" step="0.01">
+            </div>
+        </div>
     </div>
+    <div id="cores_fixadas"></div>
 </body>
+
 </html>
