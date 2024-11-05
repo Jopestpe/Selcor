@@ -3,6 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Selcor é uma página para selecionar e converter cores HEX RGBa HSL e HWB">
+    <meta name="keywords" content="HEX, RGBa, HSL, HWB, cores, cor, colors, color wheel, color, color picker">
+    <meta name="author" content="Jopestpe">
+    <meta name="publisher" content="Jopestpe">
     <link rel="icon" href="icone.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
@@ -44,10 +48,10 @@
         <div class="bloco_cores">
             <canvas id="roda_cores" class="fundo_quadriculado"></canvas>
             <div class="bloco_deslizar fundo_quadriculado">
-                <input type="range" id="transparencia" min="0" max="1" value="1" step="0.01">
+                <input type="range" id="transparencia" min="0" max="1" value="1" step="0.01" aria-label="faixa selecao transparencia">
             </div>
             <div class="bloco_deslizar">
-                <input type="range" id="claridade" min="0" max="1" value="1" step="0.01">
+                <input type="range" id="claridade" min="0" max="1" value="1" step="0.01" aria-label="faixa selecao claridade">
             </div>
         </div>
     </div>

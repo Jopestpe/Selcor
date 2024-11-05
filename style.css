@@ -110,7 +110,7 @@ body {
 
 .entrada label,
 .entrada button {
-    color: var(--cor-borda);
+    color: var(--cor-texto);
     flex-shrink: 0;
     background-color: transparent;
     border: none;
