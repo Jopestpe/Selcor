@@ -1,5 +1,5 @@
 # Selcor
-Selcor é um seletor de cores 
+Selcor é uma página para selecionar e converter cores
 
 ## Selcor pode ser uma alternativa para
 
