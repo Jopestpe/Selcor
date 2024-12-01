@@ -1,5 +1,5 @@
 # Selcor
-Seletor de cores 
+Selcor é um seletor de cores 
 
 ## Selcor pode ser uma alternativa para
 
